@@ -28,6 +28,7 @@ alias di='docker images'
 alias doc='docker-compose'
 
 # Git aliases
+alias g="git"
 alias ga="git add"
 alias gc="git commit -m"
 alias gca="git commit -am"
