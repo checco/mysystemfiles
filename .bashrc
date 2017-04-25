@@ -34,7 +34,7 @@ alias gc="git commit -m"
 alias gca="git commit -am"
 alias gb="git branch"
 alias gd="git diff"
-alias gch="git checkout"
+alias gco="git checkout"
 alias gpom="git pull origin master"
 alias gp="git pull"
 alias gs="git status"
@@ -59,6 +59,7 @@ shopt -s histappend
 # Prompt Hack
 COLBROWN="\[\033[1;33m\]"
 COLRED="\[\033[1;31m\]"
+COLGREEN="\[\033[1;32m\]"
 COLCLEAR="\[\033[0m\]"
 
 function pwd_depth_limit_2 {
@@ -69,8 +70,12 @@ function hour_now {
     date +'%H:%M:%S'
 }
 
+function set_virtualenv {
+    [ ! -z "$VIRTUAL_ENV" ] && echo " (`basename \"$VIRTUAL_ENV\"`)"
+}
+
 export -f  pwd_depth_limit_2
-export PS1="$COLRED<$COLBROWN \$(hour_now) $COLRED-$COLBROWN \$(pwd_depth_limit_2) $COLRED>$COLCLEAR "
+export PS1="$COLRED<$COLGREEN\$(set_virtualenv)$COLBROWN \$(hour_now) $COLRED-$COLBROWN \$(pwd_depth_limit_2) $COLRED>$COLCLEAR "
 
 # Oh My Git
 export TERM="xterm-color"
