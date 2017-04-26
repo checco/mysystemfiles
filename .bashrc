@@ -22,10 +22,10 @@ alias pro='cd ${PROJECTS}/'
 alias boto='cd ${PROJECTS}/boto3 && source venv/bin/activate'
 
 # Docker aliases
-alias d='docker'
-alias dp='docker pull'
-alias di='docker images'
-alias doc='docker-compose'
+alias d='sudo docker'
+alias dp='sudo docker pull'
+alias di='sudo docker images'
+alias doc='sudo docker-compose'
 
 # Git aliases
 alias g="git"
