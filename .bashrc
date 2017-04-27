@@ -13,6 +13,9 @@ alias list='sudo netstat -putan | grep LISTEN'
 # User env
 PROJECTS="/home/flatini/projects"
 
+# Row aliases
+alias row='cd ${PROJECTS}/row && source row-venv/bin/activate'
+
 # DevOps aliases
 alias ter='cd ${PROJECTS}/ops-infrastructure/terraform'
 alias t='terraform'
