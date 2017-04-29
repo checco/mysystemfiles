@@ -19,7 +19,7 @@ alias row='cd ${PROJECTS}/row && source row-venv/bin/activate'
 # DevOps aliases
 alias ter='cd ${PROJECTS}/ops-infrastructure/terraform'
 alias t='terraform'
-alias sal='cd ${PROJECTS}/ops-operations/salt/salt'
+alias sal='cd ${PROJECTS}/ops-operations/salt'
 alias jira='cd ~/Documents/jira'
 alias pro='cd ${PROJECTS}/'
 alias boto='cd ${PROJECTS}/boto3 && source venv/bin/activate'
@@ -90,7 +90,7 @@ standup_log="git-standup-logs/standup-${today}.log"
 [ ! -f "${PROJECTS}/${standup_log}" ] \
     && cd ${PROJECTS} \
     && unbuffer git-standup -a checco -w "MON-FRI" -m 2 -d 1 | tee ${standup_log} \
-    || echo "Check ${standup_log} file for yesterday commits"
+    || echo "Check ${PROJECTS}/${standup_log} file for yesterday commits"
 
 # Color Palette
 # Black       0;30     Dark Gray     1;30
