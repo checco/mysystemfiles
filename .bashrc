@@ -19,6 +19,8 @@ alias row='cd ${PROJECTS}/row && source row-venv/bin/activate'
 # DevOps aliases
 alias ter='cd ${PROJECTS}/ops-infrastructure/terraform'
 alias t='terraform'
+alias ts='terraform state'
+alias tsl='terraform state list'
 alias sal='cd ${PROJECTS}/ops-operations/salt'
 alias jira='cd ~/Documents/jira'
 alias pro='cd ${PROJECTS}/'
