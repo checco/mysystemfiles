@@ -21,6 +21,7 @@ alias ter='cd ${PROJECTS}/ops-infrastructure/terraform'
 alias t='terraform'
 alias ts='terraform state'
 alias tsl='terraform state list'
+alias tip='clear && terraform init && terraform plan'
 alias sal='cd ${PROJECTS}/ops-operations/salt'
 alias jira='cd ~/Documents/jira'
 alias pro='cd ${PROJECTS}/'
@@ -45,6 +46,8 @@ alias gp="git pull"
 alias gs="git status"
 alias gmm="git merge master"
 alias gmd="git merge develop"
+alias gph="git push"
+alias gpo="git push -u origin $(git branch | grep "*" | awk '{print $2}')"
 
 # Vault envs
 export VAULT_TOKEN=$(cat ~/.vault-token)
@@ -62,29 +65,35 @@ shopt -s histappend
 [ -z "$SSH_AUTH_SOCK" ] && eval `ssh-agent` && ssh-add
 
 # Prompt Hack
-COLBROWN="\[\033[1;33m\]"
-COLRED="\[\033[1;31m\]"
-COLGREEN="\[\033[1;32m\]"
-COLCLEAR="\[\033[0m\]"
-
-function pwd_depth_limit_2 {
-    [ "$PWD" = "$HOME" ] && echo -n "~home~" || pwd | sed -e "s|.*/\(.*/.*\)|\1|"
-}
-
-function hour_now {
-    date +'%H:%M:%S'
-}
-
-function set_virtualenv {
-    [ ! -z "$VIRTUAL_ENV" ] && echo " (`basename \"$VIRTUAL_ENV\"`)"
-}
-
-export -f  pwd_depth_limit_2
-export PS1="$COLRED<$COLGREEN\$(set_virtualenv)$COLBROWN \$(hour_now) $COLRED-$COLBROWN \$(pwd_depth_limit_2) $COLRED>$COLCLEAR "
+#COLBROWN="\[\033[1;33m\]"
+#COLRED="\[\033[1;31m\]"
+#COLGREEN="\[\033[1;32m\]"
+#COLCLEAR="\[\033[0m\]"
+#
+#function pwd_depth_limit_2 {
+#    [ "$PWD" = "$HOME" ] && echo -n "~home~" || pwd | sed -e "s|.*/\(.*/.*\)|\1|"
+#}
+#
+#function hour_now {
+#    date +'%H:%M:%S'
+#}
+#
+#function set_virtualenv {
+#    [ ! -z "$VIRTUAL_ENV" ] && echo " (`basename \"$VIRTUAL_ENV\"`)"
+#}
+#
+#export -f  pwd_depth_limit_2
+#export PS1="$COLRED<$COLGREEN\$(set_virtualenv)$COLBROWN \$(hour_now) $COLRED-$COLBROWN \$(pwd_depth_limit_2) $COLRED>$COLCLEAR "
 
 # Oh My Git
-export TERM="xterm-color"
-source /home/flatini/.oh-my-git/prompt.sh
+#export TERM="xterm-color"
+#source /home/flatini/.oh-my-git/prompt.sh
+
+# Powerline
+powerline-daemon -q
+POWERLINE_BASH_CONTINUATION=1
+POWERLINE_BASH_SELECT=1
+. /usr/share/powerline/bash/powerline.sh
 
 # Last commits:
 today=$(date +'%Y%m%d')
