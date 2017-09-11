@@ -13,15 +13,15 @@ alias list='sudo netstat -putan | grep LISTEN'
 # User env
 PROJECTS="/home/flatini/projects"
 
-# Row aliases
-alias row='cd ${PROJECTS}/row && source row-venv/bin/activate'
-
-# DevOps aliases
+### DevOps aliases
+# Terraform aliases
 alias ter='cd ${PROJECTS}/ops-infrastructure/terraform'
 alias t='terraform'
 alias ts='terraform state'
 alias tsl='terraform state list'
 alias tip='clear && terraform init && terraform plan'
+
+# Projects aliases
 alias sal='cd ${PROJECTS}/ops-operations/salt'
 alias jira='cd ~/Documents/jira'
 alias pro='cd ${PROJECTS}/'
@@ -47,7 +47,6 @@ alias gs="git status"
 alias gmm="git merge master"
 alias gmd="git merge develop"
 alias gph="git push"
-alias gpo="git push -u origin $(git branch | grep "*" | awk '{print $2}')"
 
 # Vault envs
 export VAULT_TOKEN=$(cat ~/.vault-token)
@@ -64,31 +63,6 @@ shopt -s histappend
 # SSH Hack
 [ -z "$SSH_AUTH_SOCK" ] && eval `ssh-agent` && ssh-add
 
-# Prompt Hack
-#COLBROWN="\[\033[1;33m\]"
-#COLRED="\[\033[1;31m\]"
-#COLGREEN="\[\033[1;32m\]"
-#COLCLEAR="\[\033[0m\]"
-#
-#function pwd_depth_limit_2 {
-#    [ "$PWD" = "$HOME" ] && echo -n "~home~" || pwd | sed -e "s|.*/\(.*/.*\)|\1|"
-#}
-#
-#function hour_now {
-#    date +'%H:%M:%S'
-#}
-#
-#function set_virtualenv {
-#    [ ! -z "$VIRTUAL_ENV" ] && echo " (`basename \"$VIRTUAL_ENV\"`)"
-#}
-#
-#export -f  pwd_depth_limit_2
-#export PS1="$COLRED<$COLGREEN\$(set_virtualenv)$COLBROWN \$(hour_now) $COLRED-$COLBROWN \$(pwd_depth_limit_2) $COLRED>$COLCLEAR "
-
-# Oh My Git
-#export TERM="xterm-color"
-#source /home/flatini/.oh-my-git/prompt.sh
-
 # Powerline
 powerline-daemon -q
 POWERLINE_BASH_CONTINUATION=1
@@ -102,14 +76,4 @@ standup_log="git-standup-logs/standup-${today}.log"
     && cd ${PROJECTS} \
     && unbuffer git-standup -a checco -w "MON-FRI" -m 2 -d 1 | tee ${standup_log} \
     || echo "Check ${PROJECTS}/${standup_log} file for yesterday commits"
-
-# Color Palette
-# Black       0;30     Dark Gray     1;30
-# Blue        0;34     Light Blue    1;34
-# Green       0;32     Light Green   1;32
-# Cyan        0;36     Light Cyan    1;36
-# Red         0;31     Light Red     1;31
-# Purple      0;35     Light Purple  1;35
-# Brown       0;33     Yellow        1;33
-# Light Gray  0;37     White         1;37
 
