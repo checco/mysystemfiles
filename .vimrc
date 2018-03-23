@@ -7,7 +7,6 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 
 " Plugins
-Plugin 'Valloric/YouCompleteMe'
 Plugin 'scrooloose/syntastic'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'vim-airline/vim-airline'
@@ -24,6 +23,8 @@ Plugin 'airblade/vim-gitgutter'
 Plugin 'hashivim/vim-terraform'
 Plugin 'saltstack/salt-vim'
 Plugin 'junegunn/goyo.vim'
+Plugin 'lepture/vim-jinja'
+Plugin 'dhruvasagar/vim-table-mode'
 
 " Color schemes
 Plugin 'tomasr/molokai'
@@ -41,7 +42,7 @@ let mapleader = "`"
 set laststatus=2
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
-let g:airline_theme='tomorrow'
+let g:airline_theme='term'
 map <leader>pi :PluginInstall<cr>
 map <leader>pu :PluginUpdate<cr>
 
@@ -61,6 +62,9 @@ let g:syntastic_check_on_wq = 0
 let g:NERDSpaceDelims = 1
 let g:NERDCompactSexyComs = 1
 let g:NERDCommentEmptyLines = 1
+
+" vim-table-mode
+let g:table_mode_corner = "|"
 
 " Custom part
 syntax enable
@@ -84,6 +88,9 @@ endif
 set nobackup
 set nowb
 set noswapfile
+
+" vim-jinja
+au BufNewFile,BufRead *.html,*.htm,*.shtml,*.stm set ft=jinja
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Text, tab and indent related
