@@ -9,17 +9,28 @@
 # User specific aliases and functions
 alias vi='vim'
 alias list='sudo netstat -putan | grep LISTEN'
+alias dup='sudo dnf update'
+alias dupy='sudo dnf update -y'
 
 # User env
 PROJECTS="/home/flatini/projects"
+
+# doctl aliases
+alias dlist='doctl compute droplet list'
+alias dstart='doctl compute droplet-action power-on'
 
 ### DevOps aliases
 # Terraform aliases
 alias ter='cd ${PROJECTS}/ops-infrastructure/terraform'
 alias t='terraform'
+alias ti='terraform init --upgrade=true'
+alias tip='clear && terraform init --upgrade=true && terraform plan'
+alias tap='clear && terraform apply'
+alias tu='/usr/local/bin/terraform-upgrade.sh'
 alias ts='terraform state'
 alias tsl='terraform state list'
-alias tip='clear && terraform init && terraform plan'
+alias tss='terraform state show'
+alias tgrep='egrep -v "\.terraform/|terraform.tfstate"'
 
 # Projects aliases
 alias sal='cd ${PROJECTS}/ops-operations/salt'
@@ -39,14 +50,17 @@ alias ga="git add"
 alias gc="git commit -m"
 alias gca="git commit -am"
 alias gb="git branch"
+alias gcb="git branch | grep --color '*'"
 alias gd="git diff"
 alias gco="git checkout"
+alias gcm="git checkout master"
 alias gpom="git pull origin master"
 alias gp="git pull"
+alias gpl="git pull"
 alias gs="git status"
 alias gmm="git merge master"
 alias gmd="git merge develop"
-alias gph="git push"
+alias gps="git push"
 
 # Vault envs
 export VAULT_TOKEN=$(cat ~/.vault-token)
@@ -76,4 +90,7 @@ standup_log="git-standup-logs/standup-${today}.log"
     && cd ${PROJECTS} \
     && unbuffer git-standup -a checco -w "MON-FRI" -m 2 -d 1 | tee ${standup_log} \
     || echo "Check ${PROJECTS}/${standup_log} file for yesterday commits"
+
+# doctl completion
+source <(doctl completion bash)
 
