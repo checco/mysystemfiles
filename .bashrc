@@ -8,6 +8,7 @@
 
 # User specific aliases and functions
 alias vi='vim'
+alias viup='vim +PluginUpdate +qall'
 alias list='sudo netstat -putan | grep LISTEN'
 alias dup='sudo dnf update'
 alias dupy='sudo dnf update -y'
@@ -24,8 +25,9 @@ alias dstart='doctl compute droplet-action power-on'
 alias ter='cd ${PROJECTS}/ops-infrastructure/terraform'
 alias t='terraform'
 alias ti='terraform init --upgrade=true'
-alias tip='clear && terraform init --upgrade=true && terraform plan'
-alias tap='clear && terraform apply'
+alias tp='terraform plan | landscape'
+alias tip='terraform init --upgrade=true && terraform plan | landscape'
+alias tap='terraform apply'
 alias tu='/usr/local/bin/terraform-upgrade.sh'
 alias ts='terraform state'
 alias tsl='terraform state list'
@@ -53,14 +55,19 @@ alias gb="git branch"
 alias gcb="git branch | grep --color '*'"
 alias gd="git diff"
 alias gco="git checkout"
-alias gcm="git checkout master"
+alias gcm="git checkout master && git pull"
 alias gpom="git pull origin master"
 alias gp="git pull"
 alias gpl="git pull"
 alias gs="git status"
 alias gmm="git merge master"
-alias gmd="git merge develop"
 alias gps="git push"
+
+# Vault aliases
+alias v="vault"
+alias vl="vault list"
+alias vr="vault read"
+alias vw="vault write"
 
 # Vault envs
 export VAULT_TOKEN=$(cat ~/.vault-token)
@@ -75,7 +82,7 @@ export HISTTIMEFORMAT="%d/%m/%y %T "
 shopt -s histappend
 
 # SSH Hack
-[ -z "$SSH_AUTH_SOCK" ] && eval `ssh-agent` && ssh-add
+#[ -z "$SSH_AUTH_SOCK" ] && eval `ssh-agent` && ssh-add
 
 # Powerline
 powerline-daemon -q
@@ -84,13 +91,13 @@ POWERLINE_BASH_SELECT=1
 . /usr/share/powerline/bash/powerline.sh
 
 # Last commits:
-today=$(date +'%Y%m%d')
-standup_log="git-standup-logs/standup-${today}.log"
-[ ! -f "${PROJECTS}/${standup_log}" ] \
-    && cd ${PROJECTS} \
-    && unbuffer git-standup -a checco -w "MON-FRI" -m 2 -d 1 | tee ${standup_log} \
-    || echo "Check ${PROJECTS}/${standup_log} file for yesterday commits"
+#today=$(date +'%Y%m%d')
+#standup_log="git-standup-logs/standup-${today}.log"
+#[ ! -f "${PROJECTS}/${standup_log}" ] \
+#    && cd ${PROJECTS} \
+#    && unbuffer git standup -a checco -w "MON-FRI" -m 2 -d 1 | tee ${standup_log} \
+#    || echo "Check ${PROJECTS}/${standup_log} file for yesterday commits"
 
 # doctl completion
-source <(doctl completion bash)
+#source <(doctl completion bash)
 
