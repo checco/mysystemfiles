@@ -9,6 +9,9 @@ alias viup='vim +PluginUpdate +qall'
 alias list='sudo netstat -putan | grep LISTEN'
 alias dup='sudo dnf update'
 alias dupy='sudo dnf update -y'
+alias din='sudo dnf install'
+alias dse='sudo dnf search'
+alias dpr='sudo dnf provides'
 
 # User env
 PROJECTS="/home/flatini/projects"
@@ -23,8 +26,8 @@ alias ter='cd ${PROJECTS}/ops-infrastructure/terraform'
 alias t='terraform'
 alias tv='terraform version'
 alias ti='terraform init --upgrade=true'
-alias tp='terraform plan | landscape'
-alias tip='terraform init --upgrade=true && terraform plan | landscape'
+alias tp='terraform plan'
+alias tip='terraform init --upgrade=true && terraform plan'
 alias tap='terraform apply'
 alias tu='/usr/local/bin/terraform-upgrade.sh'
 alias ts='terraform state'
@@ -90,3 +93,4 @@ POWERLINE_BASH_SELECT=1
 # doctl completion
 #source <(doctl completion bash)
 
+complete -C /usr/local/bin/terraform terraform
