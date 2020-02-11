@@ -12,6 +12,10 @@ alias dupy='sudo dnf update -y'
 alias din='sudo dnf install'
 alias dse='sudo dnf search'
 alias dpr='sudo dnf provides'
+alias ducks='du -cks * | sort -rn | head'
+alias au='atom-upgrade.sh'
+alias wt='curl wttr.in'
+alias wttr='curl wttr.in'
 
 # User env
 PROJECTS="/home/flatini/projects"
@@ -25,14 +29,20 @@ alias dstart='doctl compute droplet-action power-on'
 alias ter='cd ${PROJECTS}/ops-infrastructure/terraform'
 alias t='terraform'
 alias tv='terraform version'
-alias ti='terraform init --upgrade=true'
+alias ti='terraform init'
+alias tiu='terraform init --upgrade=true'
 alias tp='terraform plan'
 alias tip='terraform init --upgrade=true && terraform plan'
 alias tap='terraform apply'
+alias tapa='terraform apply -auto-approve'
 alias tu='/usr/local/bin/terraform-upgrade.sh'
 alias ts='terraform state'
 alias tsl='terraform state list'
 alias tss='terraform state show'
+alias twn='terraform workspace new'
+alias twl='terraform workspace list'
+alias tws='terraform workspace select'
+alias twd='terraform workspace delete'
 alias tgrep='egrep -v "\.terraform/|terraform.tfstate"'
 
 # Projects aliases
@@ -43,9 +53,11 @@ alias boto='cd ${PROJECTS}/boto3 && source venv/bin/activate'
 
 # Docker aliases
 alias d='sudo docker'
-alias dp='sudo docker pull'
+alias dps='sudo docker ps'
 alias di='sudo docker images'
-alias doc='sudo docker-compose'
+alias dr='sudo docker run'
+alias ds='sudo docker stop'
+alias dk='sudo docker kill'
 
 # Git aliases
 alias g='git'
@@ -75,6 +87,14 @@ alias vu='/usr/local/bin/vault-upgrade.sh'
 # Vault envs
 export VAULT_TOKEN=$(cat ~/.vault-token)
 export VAULT_ADDR="https://vault.prod.auto1.team"
+
+# PostgreSQL
+alias lag='echo "SELECT extract(epoch from now() - pg_last_xact_replay_timestamp()) AS slave_lag;"'
+
+# Custom
+alias standup='/usr/local/bin/standup.sh'
+alias sup='/usr/local/bin/standup.sh'
+eval $(thefuck --alias)
 
 # Bash History Hack
 export HISTFILESIZE=
