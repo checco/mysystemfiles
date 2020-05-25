@@ -1,3 +1,3 @@
 #!/bin/bash
 
-rsync -rltv /home/flatini/.bashrc  /home/flatini/.vimrc  /home/flatini/projects/mysystemfiles/
+rsync -rltv ${HOME}/.bashrc  ${HOME}/.vimrc  ${HOME}/projects/mysystemfiles/

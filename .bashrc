@@ -4,21 +4,29 @@
 [ -f /etc/bashrc ] && source /etc/bashrc
 
 # User specific aliases and functions
+# VIM
 alias vi='vim'
 alias viup='vim +PluginUpdate +qall'
 alias list='sudo netstat -putan | grep LISTEN'
+
+# DNF
 alias dup='sudo dnf update'
 alias dupy='sudo dnf update -y'
 alias din='sudo dnf install'
 alias dse='sudo dnf search'
 alias dpr='sudo dnf provides'
+
+# Misc
 alias ducks='du -cks * | sort -rn | head'
 alias au='atom-upgrade.sh'
 alias wt='curl wttr.in'
 alias wttr='curl wttr.in'
 
 # User env
-PROJECTS="/home/flatini/projects"
+PROJECTS="${HOME}/projects"
+# Projects aliases
+alias pro='cd ${PROJECTS}/'
+alias boto='cd ${PROJECTS}/boto3 && source venv/bin/activate'
 
 # doctl aliases
 alias dlist='doctl compute droplet list'
@@ -26,75 +34,74 @@ alias dstart='doctl compute droplet-action power-on'
 
 ### DevOps aliases
 # Terraform aliases
-alias ter='cd ${PROJECTS}/ops-infrastructure/terraform'
+alias ter='cd ${PROJECTS}/cloud-provisioning'
 alias t='terraform'
-alias tv='terraform version'
-alias ti='terraform init'
-alias tiu='terraform init --upgrade=true'
-alias tp='terraform plan'
-alias tip='terraform init --upgrade=true && terraform plan'
-alias tap='terraform apply'
-alias tapa='terraform apply -auto-approve'
-alias tu='/usr/local/bin/terraform-upgrade.sh'
-alias ts='terraform state'
-alias tsl='terraform state list'
-alias tss='terraform state show'
-alias twn='terraform workspace new'
-alias twl='terraform workspace list'
-alias tws='terraform workspace select'
-alias twd='terraform workspace delete'
-alias tgrep='egrep -v "\.terraform/|terraform.tfstate"'
-
-# Projects aliases
-alias sal='cd ${PROJECTS}/ops-operations/salt'
-alias jira='cd ~/Documents/jira'
-alias pro='cd ${PROJECTS}/'
-alias boto='cd ${PROJECTS}/boto3 && source venv/bin/activate'
+alias t.apply='terraform apply'
+alias t.applyy='terraform apply -auto-approve'
+alias t.grep='egrep -v "\.terraform/|terraform.tfstate"'
+alias t.import='terraform import'
+alias t.init='terraform init'
+alias t.initup='terraform init --upgrade=true'
+alias t.plan='terraform plan'
+alias t.slist='terraform state list'
+alias t.sshow='terraform state show'
+alias t.state='terraform state'
+alias t.upgrade='/usr/local/bin/terraform-upgrade.sh'
+alias t.validate='terraform validate'
+alias t.version='terraform version'
+alias t.wnew='terraform workspace new'
+alias t.wlist='terraform workspace list'
+alias t.wselect='terraform workspace select'
+alias t.wdelete='terraform workspace delete'
 
 # Docker aliases
 alias d='sudo docker'
-alias dps='sudo docker ps'
-alias di='sudo docker images'
-alias dr='sudo docker run'
-alias ds='sudo docker stop'
-alias dk='sudo docker kill'
+alias d.images='sudo docker images'
+alias d.kill='sudo docker kill'
+alias d.ps='sudo docker ps'
+alias d.run='sudo docker run'
+alias d.stop='sudo docker stop'
+
+# Kubernetes aliases
 
 # Git aliases
 alias g='git'
-alias ga='git add'
-alias gc='git commit -m'
-alias gca='git commit -am'
-alias gb='git branch'
-alias gcb="git branch | grep --color '*'"
-alias gd='git diff'
-alias gco='git checkout'
-alias gcm='git checkout master && git pull'
-alias gpom='git pull origin master'
-alias gp='git pull'
-alias gpl='git pull'
-alias gs='git status'
-alias gmm='git merge master'
-alias gps='git push'
+alias g.add='git add'
+alias g.addcommit='git commit -am'
+alias g.branch='git branch'
+alias g.branchcolor="git branch | grep --color '*'"
+alias g.checkout='git checkout'
+alias g.commit='git commit -m'
+alias g.diff='git diff'
+alias g.master='git checkout master && git pull'
+alias g.merge='git merge'
+alias g.mergemaster='git merge master'
+alias g.pull='git pull'
+alias g.pullmaster='git pull origin master'
+alias g.push='git push'
+alias g.status='git status'
 
 # Vault aliases
 alias v='vault'
-alias vv='vault version'
-alias vl='vault list'
-alias vr='vault read'
-alias vw='vault write'
-alias vu='/usr/local/bin/vault-upgrade.sh'
+alias v.list='vault list'
+alias v.read='vault read'
+alias v.upgrade='/usr/local/bin/vault-upgrade.sh'
+alias v.version='vault version'
+alias v.write='vault write'
 
 # Vault envs
-export VAULT_TOKEN=$(cat ~/.vault-token)
-export VAULT_ADDR="https://vault.prod.auto1.team"
+#export VAULT_TOKEN=$(cat ~/.vault-token)
+#export VAULT_ADDR=""
 
 # PostgreSQL
 alias lag='echo "SELECT extract(epoch from now() - pg_last_xact_replay_timestamp()) AS slave_lag;"'
 
+# MySQL
+
 # Custom
 alias standup='/usr/local/bin/standup.sh'
 alias sup='/usr/local/bin/standup.sh'
-eval $(thefuck --alias)
+#eval $(thefuck --alias)
 
 # Bash History Hack
 export HISTFILESIZE=
@@ -110,7 +117,6 @@ POWERLINE_BASH_CONTINUATION=1
 POWERLINE_BASH_SELECT=1
 . /usr/share/powerline/bash/powerline.sh
 
-# doctl completion
-#source <(doctl completion bash)
-
+# completions
+source <(doctl completion bash)
 complete -C /usr/local/bin/terraform terraform
