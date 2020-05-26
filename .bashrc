@@ -61,6 +61,7 @@ alias d.kill='sudo docker kill'
 alias d.ps='sudo docker ps'
 alias d.run='sudo docker run'
 alias d.stop='sudo docker stop'
+alias d.version='docker --version'
 
 # Kubernetes aliases
 
@@ -71,6 +72,7 @@ alias g.addcommit='git commit -am'
 alias g.branch='git branch'
 alias g.branchcolor="git branch | grep --color '*'"
 alias g.checkout='git checkout'
+alias g.clone='git clone'
 alias g.commit='git commit -m'
 alias g.diff='git diff'
 alias g.master='git checkout master && git pull'
@@ -80,6 +82,7 @@ alias g.pull='git pull'
 alias g.pullmaster='git pull origin master'
 alias g.push='git push'
 alias g.status='git status'
+alias g.version='git --version'
 
 # Vault aliases
 alias v='vault'
