@@ -64,6 +64,20 @@ alias d.stop='sudo docker stop'
 alias d.version='docker --version'
 
 # Kubernetes aliases
+alias k.all='kubectl get all --all-namespaces'
+alias k.delete='kubectl delete'
+alias k.describe='kubectl describe'
+alias k.namespaces='kubectl get namespaces'
+alias k.netpolicy='kubectl get NetworkPolicy'
+alias k.nodes='kubectl get nodes'
+alias k.pods='kubectl get pods'
+alias k.port-forward='kubectl port-forward'
+alias k.service='kubectl get service'
+alias k.services='kubectl get services'
+alias k.sts='kubectl get sts'
+alias k.top-node='kubectl top node'
+alias k.top-pod='kubectl top pod'
+alias k.version='kubectl version'
 
 # Git aliases
 alias g='git'
