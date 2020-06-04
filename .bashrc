@@ -64,6 +64,7 @@ alias d.stop='sudo docker stop'
 alias d.version='docker --version'
 
 # Kubernetes aliases
+alias k='kubectl'
 alias k.all='kubectl get all --all-namespaces'
 alias k.delete='kubectl delete'
 alias k.describe='kubectl describe'
