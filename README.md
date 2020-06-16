@@ -1,2 +1,2 @@
 ### Info
-This repo needs me to sync my .bashrc and .vimrc files between my workstations and servers
+This is the repo for sync my .bashrc and .vimrc files between my laptops
