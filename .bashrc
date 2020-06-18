@@ -70,7 +70,7 @@ alias k.all='kubectl get all --all-namespaces'
 alias k.delete='kubectl delete'
 alias k.deploy='kubectl get deploy'
 alias k.describe='kubectl describe'
-alias k.exec='kubectl exec'
+alias k.exec='kubectl exec -it'
 alias k.explain='kubectl explain'
 alias k.namespaces='kubectl get namespaces'
 alias k.netpolicy='kubectl get NetworkPolicy'
@@ -120,6 +120,15 @@ alias v.read='vault read'
 alias v.upgrade='/usr/local/bin/vault-upgrade.sh'
 alias v.version='vault version'
 alias v.write='vault write'
+
+# Flatpak aliases
+alias f='flatpak'
+alias f.history='flatpak history'
+alias f.install='flatpak install'
+alias f.list='flatpak list'
+alias f.remove='flatpak uninstall'
+alias f.search='flatpak search'
+alias f.update='flatpak update'
 
 # Vault envs
 #export VAULT_TOKEN=$(cat ~/.vault-token)
