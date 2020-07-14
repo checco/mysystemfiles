@@ -13,10 +13,13 @@ alias list='sudo netstat -putan | grep LISTEN'
 alias dup='sudo dnf update'
 alias dupy='sudo dnf update -y'
 alias din='sudo dnf install'
+alias drm='sudo dnf remove'
 alias dse='sudo dnf search'
 alias dpr='sudo dnf provides'
 
 # Misc
+alias ho-connect="sudo insmod /home/flat/dev/xmm7360-pci/xmm7360.ko && sudo python3 /home/flat/dev/xmm7360-pci/rpc/open_xdatachannel.py --apn 'web.ho-mobile.it'"
+alias ho-disconnect="sudo rmmod xmm7360"
 alias ducks='du -cks * | sort -rn | head'
 alias au='atom-upgrade.sh'
 alias wt='curl wttr.in'
@@ -57,6 +60,7 @@ alias t.wdelete='terraform workspace delete'
 
 # Docker aliases
 alias d='sudo docker'
+alias d.build='sudo docker build .'
 alias d.images='sudo docker images'
 alias d.kill='sudo docker kill'
 alias d.ps='sudo docker ps'
