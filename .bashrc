@@ -122,6 +122,8 @@ alias g.removeuntracked='git clean -f -d'
 alias g.renamebranch='git branch -m'
 alias g.reset='git reset'
 alias g.rm='git rm'
+alias g.spop='git stash pop'
+alias g.stash='git stash'
 alias g.status='git status'
 alias g.version='git --version'
 
